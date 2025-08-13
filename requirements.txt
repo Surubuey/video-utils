@@ -1,0 +1,8 @@
+# Requirements for video-utils project
+# No external dependencies required - uses only Python standard library
+# 
+# The script relies on ffmpeg being installed on the system
+# ffmpeg installation instructions:
+# - Windows: Download from https://ffmpeg.org/download.html or use chocolatey: choco install ffmpeg
+# - macOS: brew install ffmpeg
+# - Linux: apt-get install ffmpeg (Ubuntu/Debian) or yum install ffmpeg (CentOS/RHEL)
