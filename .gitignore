@@ -57,6 +57,7 @@ Thumbs.db
 
 # Test directories
 test_videos/
+test_images/
 temp_videos/
 output/
 inputs/
