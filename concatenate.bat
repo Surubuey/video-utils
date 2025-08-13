@@ -14,8 +14,10 @@ if "%~1"=="" (
 set "input_folder=%~1"
 set "output_file=%~2"
 
+REM Extract folder name for default output if not specified
 if "%output_file%"=="" (
-    set "output_file=concatenated_output.mp4"
+    for %%I in ("%input_folder%") do set "folder_name=%%~nxI"
+    set "output_file=output\!folder_name!.mp4"
 )
 
 echo Running video concatenation...

@@ -36,28 +36,28 @@ concatenate.bat "C:\Videos\ToMerge"
 This will:
 - Find all .mp4 files in the specified folder
 - Sort them alphabetically by default
-- Concatenate them into a single video file named `concatenated_output.mp4`
+- Concatenate them into a single video file named `[INPUT_FOLDER_NAME].mp4` in the `output/` folder
 
 ### Options
 
-- `--output`: Specify output filename (default: concatenated_output.mp4)
+- `--output`: Specify output filename (default: output/[INPUT_FOLDER_NAME].mp4)
 - `--sort`: Sort method (alphabetical, date_created, date_modified)
 
 ## Examples
 
 ```bash
-# Basic concatenation
+# Basic concatenation (output will be output/ToMerge.mp4)
 python concatenate_videos.py "C:\Videos\ToMerge"
 
 # Custom output name
-python concatenate_videos.py "C:\Videos\ToMerge" --output "my_merged_video.mp4"
+python concatenate_videos.py "C:\Videos\ToMerge" --output "output/my_merged_video.mp4"
 
-# Sort by creation date
+# Sort by creation date (output will be output/ToMerge.mp4)
 python concatenate_videos.py "C:\Videos\ToMerge" --sort date_created
 
 # Windows batch script examples
 concatenate.bat "C:\Videos\ToMerge"
-concatenate.bat "C:\Videos\ToMerge" "custom_name.mp4"
+concatenate.bat "C:\Videos\ToMerge" "output/custom_name.mp4"
 ```
 
 ## Testing

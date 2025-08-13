@@ -154,8 +154,8 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python concatenate_videos.py "C:\\Videos\\ToMerge"
-  python concatenate_videos.py "/home/user/videos" --output "merged.mp4"
+  python concatenate_videos.py "C:\\Videos\\ToMerge"  # Output: output/ToMerge.mp4
+  python concatenate_videos.py "/home/user/videos" --output "output/merged.mp4"
   python concatenate_videos.py "./videos" --sort date_created
         """
     )
@@ -167,8 +167,8 @@ Examples:
     
     parser.add_argument(
         '--output', '-o',
-        default='concatenated_output.mp4',
-        help='Output filename (default: concatenated_output.mp4)'
+        default=None,
+        help='Output filename (default: output/[INPUT_FOLDER_NAME].mp4)'
     )
     
     parser.add_argument(
@@ -190,8 +190,18 @@ Examples:
         # Find MP4 files
         mp4_files = find_mp4_files(args.folder, args.sort)
         
+        # Generate output path if not specified
+        if args.output is None:
+            # Get the folder name from the input path
+            folder_name = os.path.basename(os.path.abspath(args.folder))
+            args.output = f"output/{folder_name}.mp4"
+        
         # Create output path (absolute)
         output_path = os.path.abspath(args.output)
+        
+        # Ensure output directory exists
+        output_dir = os.path.dirname(output_path)
+        os.makedirs(output_dir, exist_ok=True)
         
         # Concatenate videos
         success = concatenate_videos(mp4_files, output_path)
